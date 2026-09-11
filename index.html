@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maurya Ji General Store</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    background:#f4f8f5;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#087f23,#16a34a);
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+}
+
+header h1{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+header p{
+    font-size:18px;
+}
+
+/* NAV */
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#075b1c;
+    padding:14px 8px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 10px;
+}
+
+/* HERO */
+.hero{
+    background:white;
+    text-align:center;
+    padding:40px 15px;
+}
+
+.hero h2{
+    color:#087f23;
+    font-size:31px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+.search{
+    max-width:700px;
+    margin:25px auto 0;
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    padding:17px 22px;
+    border:2px solid #16a34a;
+    border-radius:35px;
+    font-size:18px;
+    outline:none;
+}
+
+/* MAIN */
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:25px 15px;
+}
+
+.title{
+    text-align:center;
+    color:#087f23;
+    font-size:29px;
+    margin:15px 0 25px;
+}
+
+/* CATEGORY */
+.categories{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.categories button{
+    border:none;
+    background:#dcfce7;
+    color:#075b1c;
+    padding:10px 17px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.categories button:hover{
+    background:#16a34a;
+    color:white;
+}
+
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.10);
+    transition:.25s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(0,0,0,.16);
+}
+
+.product img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+    background:#eee;
+}
+
+.info{
+    padding:15px;
+}
+
+.info h3{
+    color:#075b1c;
+    font-size:18px;
+    min-height:44px;
+}
+
+.unit{
+    color:#777;
+    margin-top:5px;
+}
+
+.price{
+    color:#dc2626;
+    font-size:21px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+.add{
+    width:100%;
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:12px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:bold;
+}
+
+.add:hover{
+    background:#087f23;
+}
+
+/* NOT FOUND */
+.notfound{
+    display:none;
+    text-align:center;
+    padding:30px;
+    color:#777;
+    font-size:18px;
+}
+
+/* CART */
+.cart{
+    margin-top:45px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 6px 25px rgba(0,0,0,.10);
+}
+
+.cart h2{
+    color:#087f23;
+    margin-bottom:18px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding:14px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.quantity button{
+    border:none;
+    background:#dcfce7;
+    width:32px;
+    height:32px;
+    border-radius:6px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.remove{
+    background:#fee2e2!important;
+    color:#dc2626;
+    width:auto!important;
+    padding:5px 9px;
+    font-size:13px!important;
+}
+
+.total{
+    text-align:right;
+    font-size:25px;
+    font-weight:bold;
+    color:#dc2626;
+    margin-top:20px;
+}
+
+/* ORDER */
+.order{
+    margin-top:22px;
+    display:grid;
+    gap:12px;
+}
+
+.order input,
+.order textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:9px;
+    font-size:16px;
+}
+
+.order textarea{
+    min-height:90px;
+}
+
+.whatsapp{
+    border:none;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.whatsapp:hover{
+    background:#128C7E;
+}
+
+/* CONTACT */
+.contact{
+    margin-top:45px;
+    background:#eafaf0;
+    padding:30px;
+    text-align:center;
+    border-radius:20px;
+}
+
+.contact p{
+    margin:10px 0;
+    font-size:18px;
+}
+
+.call{
+    display:inline-block;
+    margin-top:15px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:9px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    background:#075b1c;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+footer p{
+    margin:6px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+    header h1{
+        font-size:26px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+
+    nav a{
+        font-size:13px;
+        margin:0 4px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .product img{
+        height:135px;
+    }
+
+    .info{
+        padding:11px;
+    }
+
+    .info h3{
+        font-size:15px;
+    }
+
+    .price{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛒 Maurya Ji General Store</h1>
+    <p>घर बैठे सामान मंगाइए • हम आपके घर तक पहुँचाएँगे</p>
+</header>
+
+<nav>
+    <a href="#home">होम</a>
+    <a href="#products">सामान</a>
+    <a href="#cart">🛒 Cart</a>
+    <a href="#contact">संपर्क</a>
+</nav>
+
+
+<section class="hero" id="home">
+
+    <h2>आपको जो चाहिए, यहाँ खोजिए 🔎</h2>
+
+    <p>
+        चीनी, चावल, आटा, दाल, तेल, बिस्किट,
+        मसाले, साबुन और रोज़मर्रा का सामान।
+    </p>
+
+    <div class="search">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 सामान का नाम लिखें... जैसे चीनी"
+            oninput="searchProducts()">
+    </div>
+
+</section>
+
+
+<div class="container">
+
+<h2 class="title" id="products">
+    🛍️ हमारा सामान
+</h2>
+
+
+<div class="categories">
+
+<button onclick="filterCategory('all')">सभी</button>
+<button onclick="filterCategory('grocery')">किराना</button>
+<button onclick="filterCategory('dal')">दाल</button>
+<button onclick="filterCategory('oil')">तेल</button>
+<button onclick="filterCategory('snacks')">बिस्किट/Snacks</button>
+<button onclick="filterCategory('personal')">Personal Care</button>
+<button onclick="filterCategory('household')">घर का सामान</button>
+
+</div>
+
+
+<div class="products" id="productList">
+
+
+<!-- चीनी -->
+<div class="product" data-category="grocery" data-name="चीनी sugar chini">
+<img src="images/chini.jpg" alt="चीनी">
+<div class="info">
+<h3>चीनी</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹65</p>
+<button class="add" onclick="addToCart('चीनी',65,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- चावल -->
+<div class="product" data-category="grocery" data-name="चावल rice chawal">
+<img src="images/chawal.jpg" alt="चावल">
+<div class="info">
+<h3>चावल</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹70</p>
+<button class="add" onclick="addToCart('चावल',70,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- आटा -->
+<div class="product" data-category="grocery" data-name="आटा atta flour">
+<img src="images/atta.jpg" alt="आटा">
+<div class="info">
+<h3>आटा</h3>
+<p class="unit">5 किलो</p>
+<p class="price">₹250</p>
+<button class="add" onclick="addToCart('आटा',250,'5 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- गेहूं -->
+<div class="product" data-category="grocery" data-name="गेहूं wheat gehun">
+<img src="images/gehu.jpg" alt="गेहूं">
+<div class="info">
+<h3>गेहूं</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹35</p>
+<button class="add" onclick="addToCart('गेहूं',35,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- तूर दाल -->
+<div class="product" data-category="dal" data-name="तूर दाल अरहर दाल toor dal arhar">
+<img src="images/toor-dal.jpg" alt="तूर दाल">
+<div class="info">
+<h3>तूर / अरहर दाल</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹160</p>
+<button class="add" onclick="addToCart('तूर / अरहर दाल',160,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- मूंग दाल -->
+<div class="product" data-category="dal" data-name="मूंग दाल moong dal">
+<img src="images/moong-dal.jpg" alt="मूंग दाल">
+<div class="info">
+<h3>मूंग दाल</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹145</p>
+<button class="add" onclick="addToCart('मूंग दाल',145,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- मसूर -->
+<div class="product" data-category="dal" data-name="मसूर दाल masoor dal">
+<img src="images/masoor-dal.jpg" alt="मसूर दाल">
+<div class="info">
+<h3>मसूर दाल</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹120</p>
+<button class="add" onclick="addToCart('मसूर दाल',120,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- चना दाल -->
+<div class="product" data-category="dal" data-name="चना दाल chana dal">
+<img src="images/chana-dal.jpg" alt="चना दाल">
+<div class="info">
+<h3>चना दाल</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹100</p>
+<button class="add" onclick="addToCart('चना दाल',100,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- नमक -->
+<div class="product" data-category="grocery" data-name="नमक salt namak">
+<img src="images/namak.jpg" alt="नमक">
+<div class="info">
+<h3>नमक</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹30</p>
+<button class="add" onclick="addToCart('नमक',30,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- हल्दी -->
+<div class="product" data-category="grocery" data-name="हल्दी turmeric haldi">
+<img src="images/haldi.jpg" alt="हल्दी">
+<div class="info">
+<h3>हल्दी पाउडर</h3>
+<p class="unit">100 ग्राम</p>
+<p class="price">₹35</p>
+<button class="add" onclick="addToCart('हल्दी पाउडर',35,'100 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- मिर्च -->
+<div class="product" data-category="grocery" data-name="मिर्च लाल मिर्च red chilli mirch">
+<img src="images/lal-mirch.jpg" alt="लाल मिर्च">
+<div class="info">
+<h3>लाल मिर्च पाउडर</h3>
+<p class="unit">100 ग्राम</p>
+<p class="price">₹40</p>
+<button class="add" onclick="addToCart('लाल मिर्च पाउडर',40,'100 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- धनिया -->
+<div class="product" data-category="grocery" data-name="धनिया coriander dhaniya">
+<img src="images/dhaniya.jpg" alt="धनिया">
+<div class="info">
+<h3>धनिया पाउडर</h3>
+<p class="unit">100 ग्राम</p>
+<p class="price">₹35</p>
+<button class="add" onclick="addToCart('धनिया पाउडर',35,'100 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- तेल -->
+<div class="product" data-category="oil" data-name="तेल cooking oil fortune oil">
+<img src="images/tel.jpg" alt="खाने का तेल">
+<div class="info">
+<h3>खाने का तेल</h3>
+<p class="unit">1 लीटर</p>
+<p class="price">₹150</p>
+<button class="add" onclick="addToCart('खाने का तेल',150,'1 लीटर')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- सरसों तेल -->
+<div class="product" data-category="oil" data-name="सरसों तेल mustard oil">
+<img src="images/sarso-tel.jpg" alt="सरसों तेल">
+<div class="info">
+<h3>सरसों का तेल</h3>
+<p class="unit">1 लीटर</p>
+<p class="price">₹165</p>
+<button class="add" onclick="addToCart('सरसों का तेल',165,'1 लीटर')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- घी -->
+<div class="product" data-category="oil" data-name="घी ghee">
+<img src="images/ghee.jpg" alt="घी">
+<div class="info">
+<h3>घी</h3>
+<p class="unit">500 ग्राम</p>
+<p class="price">₹300</p>
+<button class="add" onclick="addToCart('घी',300,'500 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- बिस्किट -->
+<div class="product" data-category="snacks" data-name="बिस्किट biscuit biscuits parle">
+<img src="images/biscuit.jpg" alt="बिस्किट">
+<div class="info">
+<h3>बिस्किट</h3>
+<p class="unit">1 पैकेट</p>
+<p class="price">₹10</p>
+<button class="add" onclick="addToCart('बिस्किट',10,'1 पैकेट')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- नमकीन -->
+<div class="product" data-category="snacks" data-name="नमकीन namkeen">
+<img src="images/namkeen.jpg" alt="नमकीन">
+<div class="info">
+<h3>नमकीन</h3>
+<p class="unit">200 ग्राम</p>
+<p class="price">₹50</p>
+<button class="add" onclick="addToCart('नमकीन',50,'200 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- मैगी -->
+<div class="product" data-category="snacks" data-name="मैगी maggi noodles">
+<img src="images/maggi.jpg" alt="मैगी">
+<div class="info">
+<h3>मैगी</h3>
+<p class="unit">4 पैकेट</p>
+<p class="price">₹60</p>
+<button class="add" onclick="addToCart('मैगी',60,'4 पैकेट')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- चॉकलेट -->
+<div class="product" data-category="snacks" data-name="चॉकलेट chocolate">
+<img src="images/chocolate.jpg" alt="चॉकलेट">
+<div class="info">
+<h3>चॉकलेट</h3>
+<p class="unit">1 पीस</p>
+<p class="price">₹20</p>
+<button class="add" onclick="addToCart('चॉकलेट',20,'1 पीस')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- दूध -->
+<div class="product" data-category="grocery" data-name="दूध milk doodh">
+<img src="images/doodh.jpg" alt="दूध">
+<div class="info">
+<h3>दूध</h3>
+<p class="unit">1 लीटर</p>
+<p class="price">₹68</p>
+<button class="add" onclick="addToCart('दूध',68,'1 लीटर')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- चाय -->
+<div class="product" data-category="grocery" data-name="चाय tea chai">
+<img src="images/chai.jpg" alt="चाय">
+<div class="info">
+<h3>चाय पत्ती</h3>
+<p class="unit">250 ग्राम</p>
+<p class="price">₹120</p>
+<button class="add" onclick="addToCart('चाय पत्ती',120,'250 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- साबुन -->
+<div class="product" data-category="personal" data-name="साबुन soap">
+<img src="images/sabun.jpg" alt="साबुन">
+<div class="info">
+<h3>साबुन</h3>
+<p class="unit">1 पीस</p>
+<p class="price">₹35</p>
+<button class="add" onclick="addToCart('साबुन',35,'1 पीस')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- टूथपेस्ट -->
+<div class="product" data-category="personal" data-name="टूथपेस्ट toothpaste colgate">
+<img src="images/toothpaste.jpg" alt="टूथपेस्ट">
+<div class="info">
+<h3>टूथपेस्ट</h3>
+<p class="unit">100 ग्राम</p>
+<p class="price">₹60</p>
+<button class="add" onclick="addToCart('टूथपेस्ट',60,'100 ग्राम')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- शैम्पू -->
+<div class="product" data-category="personal" data-name="शैम्पू shampoo">
+<img src="images/shampoo.jpg" alt="शैम्पू">
+<div class="info">
+<h3>शैम्पू</h3>
+<p class="unit">180 ml</p>
+<p class="price">₹120</p>
+<button class="add" onclick="addToCart('शैम्पू',120,'180 ml')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- डिटर्जेंट -->
+<div class="product" data-category="household" data-name="डिटर्जेंट detergent washing powder">
+<img src="images/detergent.jpg" alt="डिटर्जेंट">
+<div class="info">
+<h3>डिटर्जेंट पाउडर</h3>
+<p class="unit">1 किलो</p>
+<p class="price">₹90</p>
+<button class="add" onclick="addToCart('डिटर्जेंट पाउडर',90,'1 किलो')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- फिनाइल -->
+<div class="product" data-category="household" data-name="फिनाइल phenyl floor cleaner">
+<img src="images/phenyl.jpg" alt="फिनाइल">
+<div class="info">
+<h3>फिनाइल</h3>
+<p class="unit">1 लीटर</p>
+<p class="price">₹90</p>
+<button class="add" onclick="addToCart('फिनाइल',90,'1 लीटर')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- अगरबत्ती -->
+<div class="product" data-category="household" data-name="अगरबत्ती agarbatti">
+<img src="images/agarbatti.jpg" alt="अगरबत्ती">
+<div class="info">
+<h3>अगरबत्ती</h3>
+<p class="unit">1 पैकेट</p>
+<p class="price">₹40</p>
+<button class="add" onclick="addToCart('अगरबत्ती',40,'1 पैकेट')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+<!-- झाड़ू -->
+<div class="product" data-category="household" data-name="झाड़ू broom">
+<img src="images/jhaadu.jpg" alt="झाड़ू">
+<div class="info">
+<h3>झाड़ू</h3>
+<p class="unit">1 पीस</p>
+<p class="price">₹100</p>
+<button class="add" onclick="addToCart('झाड़ू',100,'1 पीस')">
+🛒 Cart में डालें
+</button>
+</div>
+</div>
+
+
+</div>
+
+
+<div class="notfound" id="notFound">
+    😕 सामान नहीं मिला। दूसरा नाम लिखकर खोजें।
+</div>
+
+
+<!-- CART -->
+
+<div class="cart" id="cart">
+
+<h2>🛒 आपका Cart</h2>
+
+<div id="cartItems">
+    <p style="color:#777;">
+        अभी Cart खाली है।
+    </p>
+</div>
+
+<div class="total">
+    कुल: ₹<span id="total">0</span>
+</div>
+
+
+<div class="order">
+
+<input
+    type="text"
+    id="customerName"
+    placeholder="👤 अपना नाम लिखें">
+
+<input
+    type="tel"
+    id="customerPhone"
+    placeholder="📱 अपना मोबाइल नंबर लिखें">
+
+<textarea
+    id="customerAddress"
+    placeholder="🏠 घर का पूरा पता लिखें"></textarea>
+
+<button class="whatsapp" onclick="sendOrder()">
+    💬 WhatsApp पर Order भेजें
+</button>
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<div class="contact" id="contact">
+
+<h2>📞 Maurya Ji General Store</h2>
+
+<p>घर तक सामान पहुँचाने के लिए WhatsApp पर Order करें।</p>
+
+<p>📍 Ballia, Uttar Pradesh</p>
+
+<a class="call" href="tel:9235670977">
+📞 9235670977 पर Call करें
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<h3>🛒 Maurya Ji General Store</h3>
+
+<p>आपकी रोज़मर्रा की जरूरत का सामान एक ही जगह</p>
+
+<p>© 2026 Maurya Ji General Store</p>
+
+</footer>
+
+
+<script>
+
+let cart = [];
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts(){
+
+    let text =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let products =
+        document.querySelectorAll(".product");
+
+    let found = 0;
+
+
+    products.forEach(product => {
+
+        let productName =
+            product.dataset.name.toLowerCase();
+
+        if(productName.includes(text)){
+
+            product.style.display = "block";
+            found++;
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    if(found === 0 && text !== ""){
+
+        document.getElementById("notFound")
+        .style.display = "block";
+
+    }else{
+
+        document.getElementById("notFound")
+        .style.display = "none";
+
+    }
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function filterCategory(category){
+
+    document
+    .getElementById("searchInput")
+    .value = "";
+
+    let products =
+        document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        if(
+            category === "all" ||
+            product.dataset.category === category
+        ){
+
+            product.style.display = "block";
+
+        }else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    document.getElementById("notFound")
+    .style.display = "none";
+
+}
+
+
+/* =========================
+   ADD CART
+========================= */
+
+function addToCart(name,price,unit){
+
+    let item =
+        cart.find(x => x.name === name);
+
+    if(item){
+
+        item.quantity++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            unit:unit,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+    document
+    .getElementById("cart")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   UPDATE CART
+========================= */
+
+function updateCart(){
+
+    let box =
+        document.getElementById("cartItems");
+
+    let totalBox =
+        document.getElementById("total");
+
+
+    if(cart.length === 0){
+
+        box.innerHTML =
+        '<p style="color:#777;">अभी Cart खाली है।</p>';
+
+        totalBox.innerText = "0";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+    box.innerHTML = "";
+
+
+    cart.forEach((item,index)=>{
+
+        let itemTotal =
+            item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        let div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+
+            <div>
+                <strong>${item.name}</strong>
+
+                <br>
+
+                <small>
+                    ₹${item.price} × ${item.quantity}
+                    (${item.unit})
+                </small>
+
+                <br>
+
+                <strong>
+                    ₹${itemTotal}
+                </strong>
+            </div>
+
+
+            <div class="quantity">
+
+                <button onclick="decrease(${index})">
+                    −
+                </button>
+
+                <span>
+                    ${item.quantity}
+                </span>
+
+                <button onclick="increase(${index})">
+                    +
+                </button>
+
+                <button
+                    class="remove"
+                    onclick="removeItem(${index})">
+                    हटाएँ
+                </button>
+
+            </div>
+
+        `;
+
+        box.appendChild(div);
+
+    });
+
+
+    totalBox.innerText = total;
+
+}
+
+
+/* PLUS */
+
+function increase(index){
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+
+/* MINUS */
+
+function decrease(index){
+
+    cart[index].quantity--;
+
+    if(cart[index].quantity <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+    updateCart();
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
+function sendOrder(){
+
+    if(cart.length === 0){
+
+        alert("पहले सामान Cart में डालें।");
+
+        return;
+
+    }
+
+
+    let name =
+        document
+        .getElementById("customerName")
+        .value.trim();
+
+
+    let phone =
+        document
+        .getElementById("customerPhone")
+        .value.trim();
+
+
+    let address =
+        document
+        .getElementById("customerAddress")
+        .value.trim();
+
+
+    if(name === ""){
+
+        alert("अपना नाम लिखें।");
+
+        return;
+
+    }
+
+
+    if(phone === ""){
+
+        alert("अपना मोबाइल नंबर लिखें।");
+
+        return;
+
+    }
+
+
+    if(address === ""){
+
+        alert("अपना पूरा पता लिखें।");
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    let message =
+`🛒 Maurya Ji General Store
+नया Order
+
+👤 नाम: ${name}
+📱 मोबाइल: ${phone}
+🏠 पता: ${address}
+
+📦 सामान:
+`;
+
+
+    cart.forEach((item,index)=>{
+
+        let itemTotal =
+            item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        message +=
+`${index+1}. ${item.name} × ${item.quantity} = ₹${itemTotal}
+`;
+
+    });
+
+
+    message +=
+`
+💰 कुल सामान: ₹${total}
+
+कृपया मेरा Order स्वीकार करें।`;
+
+
+    /*
+       दुकान का WhatsApp नंबर
+       यहाँ अपना नंबर डाल सकते हो
+    */
+
+    let shopNumber =
+        "919235670977";
+
+
+    let url =
+        "https://wa.me/" +
+        shopNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
